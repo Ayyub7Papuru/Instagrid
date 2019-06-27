@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UINavigationControllerDelegate {
+class ViewController: UIViewController {
     
     //MARK: - @IBoutlets
     @IBOutlet var plusUIButtons: [UIButton]!
@@ -19,9 +19,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
     
     //MARK: - Vars
     var tag: Int?
-    var isShare = Bool()
     var swipeGesture: UISwipeGestureRecognizer?
-    var orientation: UIDeviceOrientation?
     
     
     override func viewDidLoad() {
@@ -38,9 +36,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
     @objc func swipeHandler(_ gesture: UISwipeGestureRecognizer) {
         if swipeGesture?.direction == .up {
             UIView.animate(withDuration: 0.7, animations: {self.mainContainer.transform = CGAffineTransform(translationX: 0, y: -self.view.frame.height)})
-            if !isShare {
                 shareIt()
-            }
             
         } else {
             UIView.animate(withDuration: 0.7, animations: {self.mainContainer.transform = CGAffineTransform(translationX: -self.view.frame.width, y: 0)})
@@ -58,8 +54,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
     
     //MARK: - @IBActions
     @IBAction func plusOnClick(_ sender: UIButton) {
-        pickerController()
         tag = sender.tag
+        pickerController()
     }
     
     @IBAction func layoutsOnClick(_ sender: UIButton) {
@@ -92,7 +88,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate {
 }
 
 
-extension ViewController: UIImagePickerControllerDelegate {
+extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     //MARK: - Image Picker Controller
     
     //Alert Choice to Library Or Camera
@@ -139,16 +135,13 @@ extension ViewController: UIImagePickerControllerDelegate {
     }
     
     func shareIt() {
-        let renderer = UIGraphicsImageRenderer(size: view.bounds.size)
-        let image = renderer.image { ctx in
-            view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
-        }
+        guard let image = mainContainer.convertToImage() else { return }
         
         let share = UIActivityViewController(activityItems: [image], applicationActivities: nil)
         share.popoverPresentationController?.sourceView = self.view
         self.present(share, animated: true, completion: nil)
         
-        share.completionWithItemsHandler = { (_, completed, _, error) in
+        share.completionWithItemsHandler = { (_, completed, _, _) in
             if completed {
                 self.resetView()
                 self.resetImages()
@@ -165,6 +158,8 @@ extension ViewController: UIImagePickerControllerDelegate {
     func resetImages() {
         for image in imagesViews {
             image.image = UIImage()
+            guard let tag = tag else { return }
+            plusUIButtons[tag].isHidden = false
         }
     }
 }

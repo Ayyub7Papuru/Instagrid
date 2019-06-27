@@ -9,16 +9,19 @@
 /* Begin PBXBuildFile section */
 		B10B154B227F735900E0C8D8 /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B1144ECB227F282C005799F9 /* ThirstySoftRegular.otf */; };
 		B10B154C227F735C00E0C8D8 /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = B1144ECC227F2836005799F9 /* Delm-Medium.otf */; };
+		B124A9AC22BBBDC1006D2366 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B124A9AB22BBBDC1006D2366 /* UIView.swift */; };
 		B1A63DE7227E305600ACA04C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A63DE6227E305600ACA04C /* AppDelegate.swift */; };
 		B1A63DE9227E305600ACA04C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A63DE8227E305600ACA04C /* ViewController.swift */; };
 		B1A63DEC227E305600ACA04C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1A63DEA227E305600ACA04C /* Main.storyboard */; };
 		B1A63DEE227E305600ACA04C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1A63DED227E305600ACA04C /* Assets.xcassets */; };
 		B1A63DF1227E305600ACA04C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1A63DEF227E305600ACA04C /* LaunchScreen.storyboard */; };
+		B1E2D88D22C4EDE300B6D626 /* UIImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E2D88C22C4EDE300B6D626 /* UIImagePickerController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B1144ECB227F282C005799F9 /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ThirstySoftRegular.otf; sourceTree = "<group>"; };
 		B1144ECC227F2836005799F9 /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Delm-Medium.otf"; sourceTree = "<group>"; };
+		B124A9AB22BBBDC1006D2366 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		B1A63DE3227E305600ACA04C /* instagrid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = instagrid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1A63DE6227E305600ACA04C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1A63DE8227E305600ACA04C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -26,6 +29,7 @@
 		B1A63DED227E305600ACA04C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1A63DF0227E305600ACA04C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B1A63DF2227E305600ACA04C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1E2D88C22C4EDE300B6D626 /* UIImagePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImagePickerController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +62,50 @@
 		B1A63DE5227E305600ACA04C /* instagrid */ = {
 			isa = PBXGroup;
 			children = (
-				B1A63DE6227E305600ACA04C /* AppDelegate.swift */,
+				B1E2D89022C4EF1200B6D626 /* Model */,
+				B1E2D88F22C4EF0200B6D626 /* View */,
+				B1E2D88E22C4EEFB00B6D626 /* Controller */,
+				B1E2D89122C4EF2700B6D626 /* Supporting files */,
+			);
+			path = instagrid;
+			sourceTree = "<group>";
+		};
+		B1E2D88E22C4EEFB00B6D626 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
 				B1A63DE8227E305600ACA04C /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B1E2D88F22C4EF0200B6D626 /* View */ = {
+			isa = PBXGroup;
+			children = (
 				B1A63DEA227E305600ACA04C /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B1E2D89022C4EF1200B6D626 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B124A9AB22BBBDC1006D2366 /* UIView.swift */,
+				B1E2D88C22C4EDE300B6D626 /* UIImagePickerController.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B1E2D89122C4EF2700B6D626 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				B1A63DE6227E305600ACA04C /* AppDelegate.swift */,
 				B1A63DED227E305600ACA04C /* Assets.xcassets */,
 				B1A63DEF227E305600ACA04C /* LaunchScreen.storyboard */,
 				B1144ECB227F282C005799F9 /* ThirstySoftRegular.otf */,
 				B1144ECC227F2836005799F9 /* Delm-Medium.otf */,
 				B1A63DF2227E305600ACA04C /* Info.plist */,
 			);
-			path = instagrid;
+			path = "Supporting files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,7 +182,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1A63DE9227E305600ACA04C /* ViewController.swift in Sources */,
+				B124A9AC22BBBDC1006D2366 /* UIView.swift in Sources */,
 				B1A63DE7227E305600ACA04C /* AppDelegate.swift in Sources */,
+				B1E2D88D22C4EDE300B6D626 /* UIImagePickerController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
