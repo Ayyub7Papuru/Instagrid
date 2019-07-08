@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     
     //MARK: - @IBoutlets
     @IBOutlet var plusUIButtons: [UIButton]!
-    @IBOutlet weak var mainContainer: UIView!
+    @IBOutlet weak var mainContainerView: UIView!
     @IBOutlet var gridViews: [UIView]!
     @IBOutlet var imagesViews: [UIImageView]!
     @IBOutlet var layoutButtns: [UIButton]!
@@ -27,19 +27,19 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeHandler(_:)))
         guard let swipeGesture = swipeGesture else { return }
-        mainContainer.addGestureRecognizer(swipeGesture)
+        mainContainerView.addGestureRecognizer(swipeGesture)
         setUpDirection()
         NotificationCenter.default.addObserver(self, selector: #selector(setUpDirection), name: UIDevice.orientationDidChangeNotification, object: nil)
     }
     
-    
+    //MARK: - objc functions
     @objc func swipeHandler(_ gesture: UISwipeGestureRecognizer) {
         if swipeGesture?.direction == .up {
-            UIView.animate(withDuration: 0.7, animations: {self.mainContainer.transform = CGAffineTransform(translationX: 0, y: -self.view.frame.height)})
+            UIView.animate(withDuration: 0.7, animations: {self.mainContainerView.transform = CGAffineTransform(translationX: 0, y: -self.view.frame.height)})
                 shareIt()
             
         } else {
-            UIView.animate(withDuration: 0.7, animations: {self.mainContainer.transform = CGAffineTransform(translationX: -self.view.frame.width, y: 0)})
+            UIView.animate(withDuration: 0.7, animations: {self.mainContainerView.transform = CGAffineTransform(translationX: -self.view.frame.width, y: 0)})
             shareIt()
         }
     }
@@ -82,7 +82,7 @@ class ViewController: UIViewController {
     
     func resetView() {
         UIView.animate(withDuration: 0.7) {
-            self.mainContainer.transform = .identity
+            self.mainContainerView.transform = .identity
         }
     }
 }
@@ -135,7 +135,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     }
     
     func shareIt() {
-        guard let image = mainContainer.convertToImage() else { return }
+        guard let image = mainContainerView.convertToImage() else { return }
         
         let share = UIActivityViewController(activityItems: [image], applicationActivities: nil)
         share.popoverPresentationController?.sourceView = self.view
@@ -145,9 +145,9 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
             if completed {
                 self.resetView()
                 self.resetImages()
+                self.resetButtons()
             } else {
                 self.resetView()
-                print("annuler")
             }
         }
     }
@@ -155,14 +155,18 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     //Add plus button when all removed
     
 
+    func resetButtons() {
+        for button in plusUIButtons {
+            button.isHidden = false
+    
+        }
+    }
     func resetImages() {
         for image in imagesViews {
             image.image = UIImage()
-            guard let tag = tag else { return }
-            plusUIButtons[tag].isHidden = false
+            }
         }
     }
-}
 
 
 

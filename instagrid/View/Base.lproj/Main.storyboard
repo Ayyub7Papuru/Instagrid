@@ -313,7 +313,7 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="mainContainer" destination="W5K-AH-5bS" id="6g0-Cg-n9m"/>
+                        <outlet property="mainContainerView" destination="W5K-AH-5bS" id="6g0-Cg-n9m"/>
                         <outletCollection property="layoutButtns" destination="zg8-0R-NWS" collectionClass="NSMutableArray" id="McY-uQ-SH7"/>
                         <outletCollection property="layoutButtns" destination="9dH-CE-wXm" collectionClass="NSMutableArray" id="KQj-3j-sWq"/>
                         <outletCollection property="layoutButtns" destination="gE4-pe-kCq" collectionClass="NSMutableArray" id="1qW-x3-nMV"/>
